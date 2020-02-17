@@ -22,15 +22,11 @@ const dogs = [
 
 const allAnimals = [...cats, ...dogs];
 
-// document.getElementById('animals_select').addEventListener('change', (event)=>{
-//   let animalSelected = event.target.value;
-//   checkForSelectedAnimals(animalSelected);
-// })
-
-$('#animals_select').change((event)=>{
+document.getElementById('animals_select').addEventListener('change', (event)=>{
   let animalSelected = event.target.value;
   checkForSelectedAnimals(animalSelected);
-});
+})
+
 
 const checkForSelectedAnimals = (animalsSelectedFromInput)=>{
   if(animalsSelectedFromInput === 'dogs'){
@@ -44,28 +40,20 @@ const checkForSelectedAnimals = (animalsSelectedFromInput)=>{
 
 const renderAnimals = (animalSelected)=>{
 
-  // document.getElementById('rendered_section').innerHTML = '';
-  $('#rendered_section').html('');
+  document.getElementById('rendered_section').innerHTML = '';
 
   animalSelected.forEach((animal)=>{
-    // let temporalName = document.createElement('h2');
-    // temporalName.innerHTML = animal.name;
-    let temporalName = $('<h2>');
-    temporalName.html(animal.name);
-  
-    // let temporalImage = document.createElement('img');
-    // temporalImage.setAttribute('src', animal.imgUrl);
-    // temporalImage.setAttribute('alt', animal.name);
-    let temporalImage = $('<img />', {
-      src: animal.imgUrl,
-      alt: animal.name
-    });
-  
-    // document.getElementById('rendered_section').append(temporalName);
-    temporalName.appendTo($('#rendered_section'));
+    let temporalName = document.createElement('h2');
+    temporalName.innerHTML = animal.name;
 
-    // document.getElementById('rendered_section').append(temporalImage);
-    temporalImage.appendTo($('#rendered_section'));
+    let temporalImage = document.createElement('img');
+    temporalImage.setAttribute('src', animal.imgUrl);
+    temporalImage.setAttribute('alt', animal.name);
+
+    document.getElementById('rendered_section').append(temporalName);
+ 
+    document.getElementById('rendered_section').append(temporalImage);
+  
   })
 };
 
